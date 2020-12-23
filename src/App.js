@@ -6,6 +6,8 @@ import Home from './components/Home';
 import Footer from './components/Footer';
 import Signup from './components/Signup';
 
+// Bryce TODO: setup Private Routes
+
 function App() {
   return (
     <div className="App">

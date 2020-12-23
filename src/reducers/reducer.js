@@ -8,6 +8,8 @@ const initialState = {
     profile: {}
 }
 
+// Using a reducer to set up several hooks throughout the application to modify global state through specific actions.
+
 export const reducer = (state = initialState, action) => {
     switch(action.type){
         case(TOGGLE_ONLINE):

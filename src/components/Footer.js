@@ -1,6 +1,9 @@
 import React from 'react';
 
 export default function Footer(props){
+
+    // Pretty empty in here..
+
     return(
         <footer>
             <div>
