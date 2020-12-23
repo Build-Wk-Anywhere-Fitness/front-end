@@ -6,6 +6,9 @@ body {
 /* Header Styles */
 /* Header Styles */
 /* Header Styles */
+header {
+  margin-bottom: 2.5%;
+}
 .main-header {
   background-color: #242422;
   display: flex;
@@ -13,7 +16,6 @@ body {
   justify-content: space-between;
   align-items: baseline;
   padding: 1% 4%;
-  margin-bottom: 2.5%;
   border-radius: 0 0 25px 25px;
 }
 .main-header div {
@@ -52,6 +54,14 @@ body {
   font-size: 1.6rem;
   transition: ease-out .3s;
 }
+.login-section {
+  text-align: right;
+  margin-right: 4.5%;
+}
+.login-form form label, .login-form form label input {
+  margin-left: 10px;  
+}
+
 /* END Header Styles */
 /* END Header Styles */
 
@@ -124,12 +134,60 @@ body {
 /* Footer Styles */
 
 footer {
+  position: relative;
+  bottom: 0;
   margin: auto;
   width: 75%;
+  height: 75px;
   background-color: #242422;
   color:#90b803;
   text-align: center;
   font-size: .8rem;
   padding: 15px 0;
   border-radius: 25px 25px 0 0;
+  overflow: hidden;
+}
+
+/* END Footer Styles */
+/* END Footer Styles */
+
+/* Signup Section Styles */
+/* Signup Section Styles */
+/* Signup Section Styles */
+
+.signup-section {
+  font-size: 2.8rem;
+  margin: 5% 0;
+  width: 95%;
+  min-height: 27.7vw;
+  text-align: center;
+  overflow: hidden;
+}
+.signup-section div {
+  width: 50%;
+  margin: 5% auto 5% auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.signup-select-btn {
+  font-size: 1.8rem;
+  background-color: #242422;
+  color: #90b803;
+  width: 30%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: ease-in .4s;
+}
+.signup-select-btn:hover{
+  font-size: 2.3rem;
+  text-shadow: 0px 0px 6px #90b803;
+  transition: ease-out .2s;
 }

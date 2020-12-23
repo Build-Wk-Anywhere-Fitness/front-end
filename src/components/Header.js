@@ -1,19 +1,49 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from '../imgs/logo.png'
+import Login from './Login';
+import { connect } from 'react-redux';
 
-export default function Header(props){
+const initialValue = false;
+
+const Header = ({online}) =>{
+    const [showLogin, setShowLogin] = useState(initialValue);
+
+    const toggleLogin = e => {
+        e.preventDefault();
+        setShowLogin(!showLogin);
+    }
+
+    const toggleLogout = e => {
+        e.preventDefault();
+        console.log("logging out")
+    }
+
     return(
-        <div className="main-header">
-            <div>
-                <img src={logo} alt="Anywhere Fitness" width="150" />
-                <h1>ANYWHERE FITNESS</h1>
+        <header>
+            <div className="main-header">
+                <div>
+                    <img src={logo} alt="Anywhere Fitness" width="150" />
+                    <h1>ANYWHERE FITNESS</h1>
+                </div>
+                <nav>
+                    <a className="nav-btn" href="/" >Home</a>
+                    <a className="nav-btn" href="/" >About</a>
+                    <a className="nav-btn" href="/" >Classes</a>
+                    {(online) ? <button className="nav-btn" onClick={toggleLogout} >{"Logout"}</button> : 
+                    (showLogin) ? <button className="nav-btn" onClick={toggleLogin} >{"Cancel"}</button> : <button className="nav-btn" onClick={toggleLogin} >{"Login"}</button> }
+                </nav>
             </div>
-            <nav>
-                <a className="nav-btn" href="/" >Home</a>
-                <a className="nav-btn" href="/" >About</a>
-                <a className="nav-btn" href="/" >Classes</a>
-                <a className="nav-btn" href="/" >Login</a>
-            </nav>
-        </div>
+            <div className="login-section">
+                {(showLogin) ? <Login /> : ""}
+            </div>
+        </header>
     )
 }
+
+const mapStateToProps = state => {
+    return {
+        online: state.online
+    };
+}
+
+export default connect(mapStateToProps)(Header);

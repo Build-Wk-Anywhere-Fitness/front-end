@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default function Home(props){
     return(
@@ -26,7 +27,7 @@ export default function Home(props){
                     </div>
                 </div>
                 <div className="btn-container">
-                    <button className="signup-btn">SIGN UP</button>
+                <Link to="/signup" ><button className="signup-btn">SIGN UP</button></Link>
                 </div>
             </section>
         </div>
