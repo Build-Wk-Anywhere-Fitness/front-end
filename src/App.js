@@ -1,28 +1,106 @@
 import './App.css';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {Switch, Route} from 'react-router'
 import Header from './components/Header';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import Signup from './components/Signup';
+import StandardForm from './components/signup_forms/StandardForm'
 
-// Bryce TODO: setup Private Routes
+import * as yup from 'yup';
+import schema from './validation/schema';
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/signup">
-          <Signup />
-        </Route>
-      </Switch>
-      <Footer />
-    </div>
-  );
+// blank forms
+const initialFormValues = {
+    username: '',
+    password: '',
+    email: '',
+    role: '',
+  }
+  const initialFormErrors = {
+    username: '',
+    password: '',
+    email: '',
+    role: '',
+  }
+
+const initialDisabled = true
+
+
+export default function App(){
+  // default states
+  const [ users, setUsers ] = useState([]);
+  const [ formValues, setFormValues ] = useState(initialFormValues);
+  const [ formErrors, setFormErrors ] = useState(initialFormErrors);
+  const [ disabled, setDisabled ] = useState(initialDisabled);
+
+
+  const inputChange = (name, value) => {
+    yup
+      .reach(schema, name)
+      .validate(value)
+      .then(() => {
+        setFormErrors({
+          ...formErrors, [name]: ""
+        });
+      })
+      .catch(err => {
+        setFormErrors({
+          ...formErrors, [name]: err.errors[0]
+        });
+      });
+
+    setFormValues({
+      ...formValues,
+      [name]: value
+    })
+  }
+
+  // form submission
+
+  const submitForm = () => {
+    const newUser = {
+      username: formValues.username.trim(),
+      password: formValues.password.trim(),
+      email: formValues.email.trim(),
+      role: formValues.role,
+    };
+    setUsers([newUser, ...users]);
+    setFormValues(initialFormValues);
+  };
+
+  // schema validation
+
+  useEffect(() => {
+    schema.isValid(formValues).then(valid => {
+      setDisabled(!valid);
+    });
+  }, [formValues])
+
+
+  // Bryce TODO: setup Private Routes
+
+
+    return(
+        <div className="App">
+          <Header />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/signup">
+              <Signup />
+            </Route>
+            <Route path='/signup-standard'>
+                <StandardForm 
+                 values={formValues} 
+                 change={inputChange} 
+                 submit={submitForm} 
+                 errors={formErrors}
+                 disabled={disabled} />
+                </Route>
+          </Switch>
+          <Footer />
+            </div>
+    )
 }
-
-export default App;
