@@ -1,13 +1,13 @@
 import './App.css';
 import {useState, useEffect} from 'react';
-import {Switch, Route} from 'react-router'
+import {Switch, Route} from 'react-router';
+import * as yup from 'yup';
+import axios from 'axios';
 import Header from './components/Header';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import Signup from './components/Signup';
 import StandardForm from './components/signup_forms/StandardForm'
-
-import * as yup from 'yup';
 import schema from './validation/schema';
 
 // blank forms
@@ -35,6 +35,18 @@ export default function App(){
   const [ disabled, setDisabled ] = useState(initialDisabled);
 
 
+  const postNewUser = newUser => {
+    axios
+    .post('https://reqres.in/api/users', newUser)
+    .then(res => {
+      setUsers([res.data, ...users])
+      setFormValues(initialFormValues)
+    })
+    .catch(err => {
+      console.log('error', err);
+    })
+  };
+  
   const inputChange = (name, value) => {
     yup
       .reach(schema, name)
@@ -65,8 +77,7 @@ export default function App(){
       email: formValues.email.trim(),
       role: formValues.role,
     };
-    setUsers([newUser, ...users]);
-    setFormValues(initialFormValues);
+    postNewUser(newUser);
   };
 
   // schema validation
