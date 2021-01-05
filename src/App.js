@@ -17,12 +17,14 @@ const initialFormValues = {
   password: '',
   email: '',
   role: '',
+  authCode: '',
 }
 const initialFormErrors = {
   username: '',
   password: '',
   email: '',
   role: '',
+  authCode: '',
 }
 
 const initialDisabled = true
