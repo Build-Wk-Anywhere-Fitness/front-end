@@ -8,11 +8,25 @@ export const SET_LOGOUT = "SET_LOGOUT";
 // Making use of Thunk as middleware to intercept the call to update state and manipulate the values passed in before we set it. This is 
 // mostly useful for making axios calls and setting that information to state, because without middleware we wouldn't be able to use axios.
 
-export const getLogin = () => dispatch => {
+export const getLogin = (account) => dispatch => {
+    // We're sending up an account object to shoot over to the endpoint via axios
     axios
-        .get('endpoing/goes/here')
+        .post('https://build-wk-anywhere-fitness.herokuapp.com/api/auth/login', account)
         .then(res => {
+            console.log(res);
             dispatch({type: TOGGLE_ONLINE});
-            dispatch({type: SET_ACCOUNT, payload: res.data.account})
+            localStorage.setItem("token", res.data.token)
         })
-}
+        .catch(err => {
+            console.log(err);
+        });
+};
+
+export const getLogout = () => dispatch => {
+    dispatch({type: SET_LOGOUT})
+    localStorage.removeItem("token");
+};
+
+export const checkToken = () => dispatch => {
+    dispatch({type: TOGGLE_ONLINE})
+};

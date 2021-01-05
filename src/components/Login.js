@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import {getLogin} from '../actions/index';
 
 const initialValues = {
     username: "",
     password: ""
 };
 
-export default function Login(props){
+function Login({ online, getLogin}){
     const [account, setAccount] = useState(initialValues);
 
     // A custom hook set up to be able to modify values in state in a centralized location rather than
@@ -22,9 +25,7 @@ export default function Login(props){
 
     const handleSubmit = e => {
         e.preventDefault();
-        // Will be importing a hook from actions/index.js to send the 'account' slice of state up and perform an axios
-        // call to the endpoint to validate the credentials. If they're valid, we should get a token back and save it
-        // to localStorage. This will be helpful in utils/axiosWithAuth.js!
+        getLogin(account);
     }
 
     return(
@@ -53,3 +54,11 @@ export default function Login(props){
         </section>
     )
 }
+
+const mapStateToProps = state => {
+    return {
+        online: state.online
+    }
+}
+
+export default connect(mapStateToProps, {getLogin})(Login);

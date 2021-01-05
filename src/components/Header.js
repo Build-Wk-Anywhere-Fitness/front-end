@@ -2,10 +2,11 @@ import React, {useState} from 'react';
 import logo from '../imgs/logo.png'
 import Login from './Login';
 import { connect } from 'react-redux';
+import { getLogout } from '../actions/index';
 
 const initialValue = false;
 
-const Header = ({online}) =>{
+const Header = ({online, getLogout}) =>{
     const [showLogin, setShowLogin] = useState(initialValue);
 
     const toggleLogin = e => {
@@ -15,7 +16,9 @@ const Header = ({online}) =>{
 
     const toggleLogout = e => {
         e.preventDefault();
-        console.log("logging out")
+        setShowLogin(false);
+        getLogout();
+        alert("Successfully logged out!");
     }
 
     return(
@@ -38,7 +41,7 @@ const Header = ({online}) =>{
             </div>
             <div className="login-section">
                 {/* If we've clicked the login button, show the Login component */}
-                {(showLogin) ? <Login /> : ""}
+                {(!online && showLogin) ? <Login /> : ""}
             </div>
         </header>
     )
@@ -52,4 +55,4 @@ const mapStateToProps = state => {
     };
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, { getLogout })(Header);
