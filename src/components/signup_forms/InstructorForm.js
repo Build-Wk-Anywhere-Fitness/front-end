@@ -76,6 +76,18 @@ export default function InstructorForm(props) {
                         <option value="user">User</option>
                         <option value="instructor">Instructor</option>
                     </select>
+                    <div>
+                        <div className="errors">
+                            <div>{errors.authCode}</div>
+                        </div>
+                        <input
+                            value={values.authCode}
+                            name='authCode'
+                            onChange={onChange}
+                            type="text"
+                            placeholder="Auth Code"
+                        />
+                    </div>
                 </div>
                 <button disabled={disabled}>Submit</button>
             </div>
