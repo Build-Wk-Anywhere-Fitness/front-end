@@ -32,7 +32,6 @@ export default function StandardForm(props) {
         <div className='errors'>
           {/* validation errors */}
           <div>{errors.username}</div>
-          <div>{errors.email}</div>
           <div>{errors.role}</div>
           <div>{errors.civil}</div>
         </div>
@@ -60,15 +59,6 @@ export default function StandardForm(props) {
           />
         </label>
 
-        <label>Email
-          <input
-            value={values.email}
-            onChange={onChange}
-            name='email'
-            type='email'
-          />
-        </label>
-
         <label>Role
           <select
             onChange={onChange}
@@ -77,7 +67,6 @@ export default function StandardForm(props) {
           >
             <option value=''>- Select an option -</option>
             <option value='user'>User</option>
-            <option value='instructor'>Instructor</option>
           </select>
         </label>
 
