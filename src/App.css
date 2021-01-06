@@ -3,10 +3,9 @@
   Please make changes, move things, delete things, play around, etc. 
 */
 
-
 body {
   margin: auto;
-  width: 80%;;
+  width: 80%;
 }
 
 /* Header Styles */
@@ -35,7 +34,7 @@ header {
   display: inline;
   font-size: 3.8rem;
   margin-right: 8%;
-  color:#90b803;
+  color: #90b803;
 }
 .main-header nav {
   width: 40%;
@@ -58,14 +57,15 @@ header {
 }
 .nav-btn:hover {
   font-size: 1.6rem;
-  transition: ease-out .3s;
+  transition: ease-out 0.3s;
 }
 .login-section {
   text-align: right;
   margin-right: 4.5%;
 }
-.login-form form label, .login-form form label input {
-  margin-left: 10px;  
+.login-form form label,
+.login-form form label input {
+  margin-left: 10px;
 }
 
 /* END Header Styles */
@@ -77,12 +77,12 @@ header {
 
 .main-section {
   margin: auto;
- width: 95%;
- display: flex;
- flex-direction: column;
- justify-content: center;
- align-items: center;
- color: #242422;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #242422;
 }
 .graphic-card {
   margin-bottom: 5%;
@@ -99,7 +99,7 @@ header {
   margin: auto;
   width: 80%;
 }
-.graphic-card:nth-child(even){
+.graphic-card:nth-child(even) {
   flex-direction: row-reverse;
 }
 .graphic-card img {
@@ -108,17 +108,17 @@ header {
 .graphic-card div {
   font-size: 1.8rem;
 }
-.btn-container{
+.btn-container {
   text-align: center;
   height: 80px;
   width: 100%;
   margin-bottom: 5%;
 }
-.signup-btn{
-  background-color:#242422;
+.signup-btn {
+  background-color: #242422;
   font-size: 1.6rem;
   font-weight: bolder;
-  color:#90b803;
+  color: #90b803;
   border: none;
   width: 180px;
   height: 60px;
@@ -126,11 +126,11 @@ header {
   border-radius: 15px;
   transition: ease-out 1s;
 }
-.signup-btn:hover{
+.signup-btn:hover {
   width: 220px;
   height: 70px;
   font-size: 2.4rem;
-  transition: ease-out .3s;
+  transition: ease-out 0.3s;
 }
 /* END Home Page Styles */
 /* END Home Page Styles */
@@ -146,9 +146,9 @@ footer {
   width: 75%;
   height: 75px;
   background-color: #242422;
-  color:#90b803;
+  color: #90b803;
   text-align: center;
-  font-size: .8rem;
+  font-size: 0.8rem;
   padding: 15px 0;
   border-radius: 25px 25px 0 0;
   overflow: hidden;
@@ -190,10 +190,42 @@ footer {
   align-items: center;
   text-decoration: none;
   border-radius: 25px;
-  transition: ease-in .4s;
+  transition: ease-in 0.4s;
 }
-.signup-select-btn:hover{
+.signup-select-btn:hover {
   font-size: 2.3rem;
   text-shadow: 0px 0px 6px #90b803;
-  transition: ease-out .2s;
+  transition: ease-out 0.2s;
+}
+.signup-instructor-section {
+  font-size: 2.8rem;
+  margin: 5% 0;
+  width: 95%;
+  min-height: 27.7vw;
+  text-align: center;
+  overflow: hidden;
+}
+.signup-instructor-section div {
+  width: 50%;
+  margin: 5% auto 5% auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.main-instructor-section input {
+  margin-bottom: 3px;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+}
+.main-instructor-section button {
+  padding: 10px;
+  margin-top: 3px;
+  margin-right: 5px;
+}
+.errors {
+  font-size: 1rem;
+  color: #cc3300;
+  font-weight: bold;
 }

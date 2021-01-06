@@ -1,37 +1,41 @@
 import './App.css';
-import {useState, useEffect} from 'react';
-import {Switch, Route} from 'react-router';
+import { useState, useEffect } from 'react';
+import { Switch, Route } from 'react-router';
 import * as yup from 'yup';
 import axios from 'axios';
 import Header from './components/Header';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import Signup from './components/Signup';
-import CreateClass from './components/CreateClass'
-import StandardForm from './components/signup_forms/StandardForm'
+import CreateClass from './components/CreateClass';
+import StandardForm from './components/signup_forms/StandardForm';
+import InstructorForm from './components/signup_forms/InstructorForm';
 import schema from './validation/schema';
 
 // blank forms
 const initialFormValues = {
-    username: '',
-    password: '',
-    role: '',
-  }
-  const initialFormErrors = {
-    username: '',
-    password: '',
-    role: '',
-  }
+
+  username: '',
+  password: '',
+  role: '',
+  authCode: '',
+}
+const initialFormErrors = {
+  username: '',
+  password: '',
+  role: '',
+  authCode: '',
+}
 
 const initialDisabled = true
 
 
-export default function App(){
+export default function App() {
   // default states
-  const [ users, setUsers ] = useState([]);
-  const [ formValues, setFormValues ] = useState(initialFormValues);
-  const [ formErrors, setFormErrors ] = useState(initialFormErrors);
-  const [ disabled, setDisabled ] = useState(initialDisabled);
+  const [users, setUsers] = useState([]);
+  const [formValues, setFormValues] = useState(initialFormValues);
+  const [formErrors, setFormErrors] = useState(initialFormErrors);
+  const [disabled, setDisabled] = useState(initialDisabled);
 
 
 // posting the new user registration
@@ -48,7 +52,7 @@ export default function App(){
       console.log('error', err);
     })
   };
-  
+
   const inputChange = (name, value) => {
     yup
       .reach(schema, name)
@@ -112,8 +116,16 @@ export default function App(){
                  errors={formErrors}
                  disabled={disabled} />
                 </Route>
-                <Route path='/create-class'>
-            <CreateClass />
+            <Route path='/signup-instructor'>
+                <InstructorForm
+                values={formValues}
+                change={inputChange}
+                submit={submitForm}
+                errors={formErrors}
+                disabled={disabled} />
+            </Route>
+            <Route path='/create-class'>
+                <CreateClass />
             </Route>
           </Switch>
           <Footer />
