@@ -14,13 +14,11 @@ import schema from './validation/schema';
 const initialFormValues = {
     username: '',
     password: '',
-    email: '',
     role: '',
   }
   const initialFormErrors = {
     username: '',
     password: '',
-    email: '',
     role: '',
   }
 
@@ -35,12 +33,15 @@ export default function App(){
   const [ disabled, setDisabled ] = useState(initialDisabled);
 
 
+// posting the new user registration
+
   const postNewUser = newUser => {
     axios
-    .post('https://reqres.in/api/users', newUser)
+    .post('https://build-wk-anywhere-fitness.herokuapp.com/api/auth/register', newUser)
     .then(res => {
       setUsers([res.data, ...users])
       setFormValues(initialFormValues)
+      console.log('success, user created');
     })
     .catch(err => {
       console.log('error', err);
@@ -74,7 +75,6 @@ export default function App(){
     const newUser = {
       username: formValues.username.trim(),
       password: formValues.password.trim(),
-      email: formValues.email.trim(),
       role: formValues.role,
     };
     postNewUser(newUser);
@@ -87,6 +87,7 @@ export default function App(){
       setDisabled(!valid);
     });
   }, [formValues])
+
 
 
   // Bryce TODO: setup Private Routes
