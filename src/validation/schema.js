@@ -8,9 +8,11 @@ export default yup.object().shape({
     .min(3, 'username must be at least 3 characters long'),
     password: yup
     .string()
-    .required('password is required')
-    .min(6, 'passwords must be at least 6 characters long'),
+    .required('password is required'),
     role: yup
     .string()
     .oneOf(['user', 'instructor'], 'role is required'),
+    authCode: yup
+    .string()
+    .required('auth code is required'),
 })
