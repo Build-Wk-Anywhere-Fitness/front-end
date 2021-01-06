@@ -29,7 +29,7 @@ const Header = ({online}) =>{
                 <nav>
                     <a className="nav-btn" href="/" >Home</a>
                     <a className="nav-btn" href="/" >About</a>
-                    <Link className="nav-btn" to="/create-class" >Classes</Link>
+                    <a className="nav-btn" href="/classes" >Classes</a>
                     {/* Checks global state to see if the user is online, if they are online then we display the logout button */}
                     {(online) ? <button className="nav-btn" onClick={toggleLogout} >{"Logout"}</button> : 
                     // if the user is not online, we show the login/cancel button

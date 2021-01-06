@@ -25,7 +25,7 @@ const initialFormValues = {
 
   const initialDisabled = true
 
-export default function CreateClass(props){ 
+export default function EditClass(props){ 
     const { } = props;
 
     // default states
@@ -99,7 +99,7 @@ export default function CreateClass(props){
                   <div>{formErrors.location}</div>
               </div>
 
-              <h4>Please fill out the following information to create a class</h4>
+              <h4>Please fill out the following information to edit an existing class</h4>
               <label>
               Name
                   <input name='name' 
@@ -230,7 +230,7 @@ export default function CreateClass(props){
 
 
               <div className='submit'>
-                  <button disabled={disabled} onSubmit={submitForm}>Create Class</button>
+                  <button disabled={disabled} onSubmit={submitForm}>Edit Class</button>
               </div>
          
       </form>

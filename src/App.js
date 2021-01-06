@@ -7,7 +7,9 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import Signup from './components/Signup';
+import ClassesDir from './components/Class'
 import CreateClass from './components/CreateClass';
+import EditClass from './components/EditClass';
 import StandardForm from './components/signup_forms/StandardForm';
 import InstructorForm from './components/signup_forms/InstructorForm';
 import schema from './validation/schema';
@@ -124,8 +126,14 @@ export default function App() {
                 errors={formErrors}
                 disabled={disabled} />
             </Route>
+            <Route path='/classes'>
+                <ClassesDir />
+            </Route>
             <Route path='/create-class'>
                 <CreateClass />
+            </Route>
+            <Route path='/edit-class'>
+                <EditClass />
             </Route>
           </Switch>
           <Footer />
