@@ -1,11 +1,10 @@
 // This slice of state will be global and passed to specific components that need it rather than passing it through prop drilling
 import { TOGGLE_ONLINE, SET_ACCOUNT, SET_LOGOUT } from '../actions/index';
 
+let token = localStorage.getItem("token");
+
 const initialState = {
-    username: "",
-    accountStatus: "",
-    online: true,
-    profile: {}
+    online: (token) ? true : false,
 }
 
 // Using a reducer to set up several hooks throughout the application to modify global state through specific actions.
@@ -13,18 +12,19 @@ const initialState = {
 export const reducer = (state = initialState, action) => {
     switch(action.type){
         case(TOGGLE_ONLINE):
+            console.log(action.payload)
             return ({
                 ...state,
                 online: true
             })
         case(SET_LOGOUT):
-            state = initialState;
-            return;
-        case(SET_ACCOUNT):
             return ({
                 ...state,
-                username: action.payload.username, accountStatus: action.payload.accountStatus, profile: action.payload.profile
+                online: false
             })
+        // case(SET_ACCOUNT):
+            // Set Account action not in use, could be used for setting data to state. Currently we are rendering data to the page.
+            // return state;
         default:
             return state;
     }

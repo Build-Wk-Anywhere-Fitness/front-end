@@ -10,14 +10,14 @@ export default yup.object().shape({
         .string()
         .required("Password is Required")
         .min(6, "Passwords must be at least 6 characters long."),
-    email: yup
-        .string()
-        .email()
-        .required('please enter a valid email address'),
+    // email: yup
+    //     .string()
+    //     .email()
+    //     .required('please enter a valid email address'),
     role: yup
         .string()
         .oneOf(['user', 'instructor'], 'role is required'),
-    authCode: yup
-        .string()
-        .required('auth code is required')
+    // authCode: yup
+    //     .string()
+    //     .required('auth code is required')
 })

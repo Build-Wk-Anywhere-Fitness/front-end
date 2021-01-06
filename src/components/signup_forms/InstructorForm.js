@@ -50,7 +50,7 @@ export default function InstructorForm(props) {
                         placeholder="Password"
                     />
                 </div>
-                <div>
+                {/* <div>
                     <div className="errors">
                         <div>{errors.email}</div>
                     </div>
@@ -61,7 +61,7 @@ export default function InstructorForm(props) {
                         type="email"
                         placeholder="Email"
                     />
-                </div>
+                </div> */}
                 <div>
                     <div className="errors">
                         <div>{errors.role}</div>
@@ -76,7 +76,7 @@ export default function InstructorForm(props) {
                         <option value="user">User</option>
                         <option value="instructor">Instructor</option>
                     </select>
-                    <div>
+                    {/* <div>
                         <div className="errors">
                             <div>{errors.authCode}</div>
                         </div>
@@ -87,7 +87,7 @@ export default function InstructorForm(props) {
                             type="text"
                             placeholder="Auth Code"
                         />
-                    </div>
+                    </div> */}
                 </div>
                 <button disabled={disabled}>Submit</button>
             </div>

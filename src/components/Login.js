@@ -1,12 +1,16 @@
 import React, {useState} from 'react';
+import { useHistory } from 'react-router';
+import {getLogin} from '../actions/index';
+import { connect } from 'react-redux';
 
 const initialValues = {
     username: "",
     password: ""
 };
 
-export default function Login(props){
+const Login = (props) => {
     const [account, setAccount] = useState(initialValues);
+    const { push } = useHistory();
 
     // A custom hook set up to be able to modify values in state in a centralized location rather than
     // creating several slices of state and their own changeHandlers. Super usefule when compiling data on forms :)
@@ -22,16 +26,15 @@ export default function Login(props){
 
     const handleSubmit = e => {
         e.preventDefault();
-        // Will be importing a hook from actions/index.js to send the 'account' slice of state up and perform an axios
-        // call to the endpoint to validate the credentials. If they're valid, we should get a token back and save it
-        // to localStorage. This will be helpful in utils/axiosWithAuth.js!
+        props.getLogin(account);
+        push('/')
     }
 
     return(
         <section className="login-form">
             <form onSubmit={handleSubmit}>
                 <label>
-                    Username: 
+                    <p>Username:</p> 
                     <input 
                     type="text"
                     name="username"
@@ -40,7 +43,7 @@ export default function Login(props){
                     />
                 </label>
                 <label>
-                    Password:
+                    <p>Password:</p>
                     <input 
                     type="password"
                     name="password"
@@ -53,3 +56,11 @@ export default function Login(props){
         </section>
     )
 }
+
+const mapStateToProps = state => {
+    return {
+        online: state.online
+    }
+}
+
+export default connect(mapStateToProps, { getLogin })(Login);
