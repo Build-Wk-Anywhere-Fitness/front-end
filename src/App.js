@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import Signup from './components/Signup';
+import CreateClass from './components/CreateClass'
 import StandardForm from './components/signup_forms/StandardForm'
 import schema from './validation/schema';
 
@@ -69,7 +70,7 @@ export default function App(){
     })
   }
 
-  // form submission
+  // form submissions
 
   const submitForm = () => {
     const newUser = {
@@ -111,6 +112,9 @@ export default function App(){
                  errors={formErrors}
                  disabled={disabled} />
                 </Route>
+                <Route path='/create-class'>
+            <CreateClass />
+            </Route>
           </Switch>
           <Footer />
             </div>
