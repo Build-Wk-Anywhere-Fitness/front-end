@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import Signup from './components/Signup';
+import CreateClass from './components/CreateClass';
 import StandardForm from './components/signup_forms/StandardForm';
 import InstructorForm from './components/signup_forms/InstructorForm';
 import schema from './validation/schema';
@@ -73,7 +74,7 @@ export default function App() {
     })
   }
 
-  // form submission
+  // form submissions
 
   const submitForm = () => {
     const newUser = {
@@ -97,34 +98,37 @@ export default function App() {
   // Bryce TODO: setup Private Routes
 
 
-  return (
-    <div className="App">
-      <Header />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/signup">
-          <Signup />
-        </Route>
-        <Route path='/signup-standard'>
-          <StandardForm
-            values={formValues}
-            change={inputChange}
-            submit={submitForm}
-            errors={formErrors}
-            disabled={disabled} />
-        </Route>
-        <Route path='/signup-instructor'>
-          <InstructorForm
-            values={formValues}
-            change={inputChange}
-            submit={submitForm}
-            errors={formErrors}
-            disabled={disabled} />
-        </Route>
-      </Switch>
-      <Footer />
-    </div>
-  )
+    return(
+        <div className="App">
+          <Header />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/signup">
+              <Signup />
+            </Route>
+            <Route path='/signup-standard'>
+                <StandardForm 
+                 values={formValues} 
+                 change={inputChange} 
+                 submit={submitForm} 
+                 errors={formErrors}
+                 disabled={disabled} />
+                </Route>
+            <Route path='/signup-instructor'>
+                <InstructorForm
+                values={formValues}
+                change={inputChange}
+                submit={submitForm}
+                errors={formErrors}
+                disabled={disabled} />
+            </Route>
+            <Route path='/create-class'>
+                <CreateClass />
+            </Route>
+          </Switch>
+          <Footer />
+            </div>
+    )
 }
