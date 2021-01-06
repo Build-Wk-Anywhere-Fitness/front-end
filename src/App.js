@@ -17,14 +17,14 @@ const initialFormValues = {
 
   username: '',
   password: '',
+  confirmPassword: '',
   role: '',
-  authCode: '',
 }
 const initialFormErrors = {
   username: '',
   password: '',
+  confirmPassword: '',
   role: '',
-  authCode: '',
 }
 
 const initialDisabled = true
@@ -38,19 +38,19 @@ export default function App() {
   const [disabled, setDisabled] = useState(initialDisabled);
 
 
-// posting the new user registration
+  // posting the new user registration
 
   const postNewUser = newUser => {
     axios
-    .post('https://build-wk-anywhere-fitness.herokuapp.com/api/auth/register', newUser)
-    .then(res => {
-      setUsers([res.data, ...users])
-      setFormValues(initialFormValues)
-      console.log('success, user created');
-    })
-    .catch(err => {
-      console.log('error', err);
-    })
+      .post('https://build-wk-anywhere-fitness.herokuapp.com/api/auth/register', newUser)
+      .then(res => {
+        setUsers([res.data, ...users])
+        setFormValues(initialFormValues)
+        console.log('success, user created');
+      })
+      .catch(err => {
+        console.log('error', err);
+      })
   };
 
   const inputChange = (name, value) => {
