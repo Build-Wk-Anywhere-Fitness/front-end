@@ -1,7 +1,4 @@
 // Create a form for users that wish to sign up as a standard user
-
-
-
 import React from 'react'
 
 export default function StandardForm(props) {

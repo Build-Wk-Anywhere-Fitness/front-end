@@ -1,22 +1,17 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import logo from '../imgs/logo.png'
-import Login from './Login';
+// import Login from './Login';
 import { connect } from 'react-redux';
+import { getLogout} from '../actions/index';
 
-const initialValue = false;
 
-const Header = ({online}) =>{
-    const [showLogin, setShowLogin] = useState(initialValue);
-
-    const toggleLogin = e => {
-        e.preventDefault();
-        setShowLogin(!showLogin);
-    }
+const Header = (props) =>{
+    const { online, getLogout } = props;
 
     const toggleLogout = e => {
         e.preventDefault();
-        console.log("logging out")
+        getLogout();
     }
 
     return(
@@ -29,18 +24,20 @@ const Header = ({online}) =>{
                 <nav>
                     <a className="nav-btn" href="/" >Home</a>
                     <a className="nav-btn" href="/" >About</a>
-                    <a className="nav-btn" href="/classes" >Classes</a>
+                    <Link className="nav-btn" to="/classes" >Classes</Link>
                     {/* Checks global state to see if the user is online, if they are online then we display the logout button */}
                     {(online) ? <button className="nav-btn" onClick={toggleLogout} >{"Logout"}</button> : 
-                    // if the user is not online, we show the login/cancel button
-                    (showLogin) ? <button className="nav-btn" onClick={toggleLogin} >{"Cancel"}</button> :
-                    <button className="nav-btn" onClick={toggleLogin} >{"Login"}</button> }
+                    // if the user is not online, we show the login button
+                    <Link className="nav-btn" to="/login">{`Login`}</Link>
+                    }
                 </nav>
             </div>
-            <div className="login-section">
-                {/* If we've clicked the login button, show the Login component */}
-                {(showLogin) ? <Login /> : ""}
-            </div>
+            {
+            // <div className="login-section">
+            //     {/* If we've clicked the login button, show the Login component */}
+            //     {(showLogin) ? <Login /> : ""}
+            // </div>
+            }
         </header>
     )
 }
@@ -53,4 +50,4 @@ const mapStateToProps = state => {
     };
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, { getLogout })(Header);
