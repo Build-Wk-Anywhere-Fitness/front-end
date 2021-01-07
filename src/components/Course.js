@@ -30,9 +30,10 @@ export default function Course(props){
         <div className="course-card">
             <h3>Name: {course.name}</h3>
             <h3>Type: {course.type}</h3>
-            <h3>Start: {course.start_time}</h3>
+            <h3>Date: {course.date}</h3>
+            <h3>Start: {course.time}</h3>
             <h3>Duration: {course.duration}</h3>
-            <h3>Intensity: {course.intensity_level}</h3>
+            <h3>Intensity: {course.intensity}</h3>
             <h3>Location: {course.location}</h3>
             <h3>Attendees: {course.attendee_count}</h3>
             {(user === "instructor") ? <Panel /> : ""}

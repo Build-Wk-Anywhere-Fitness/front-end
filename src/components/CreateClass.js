@@ -5,11 +5,12 @@ import axios from 'axios';
 const initialClass = {
     name: "",
     type: "",
-    start_time: "",
+    date: "",
+    time: "",
     duration: "60",
-    intensity_level: "low",
+    intensity: "low",
     location: "",
-    max_class_size: "10",
+    max_size: 10,
     attendee_count: 0
 };
 
@@ -18,6 +19,15 @@ export default function CreateClass(props){
     const [newClass, setNewClass] = useState(initialClass);
 
     const handleChange = e => {
+        if(e.target.name === "max_size"){
+            let num = (Number(e.target.value));
+            setNewClass({
+                ...newClass,
+                max_size: parseInt(num)
+            })
+            return
+        }
+
         setNewClass({
             ...newClass,
             [e.target.name]: e.target.value
@@ -53,8 +63,12 @@ export default function CreateClass(props){
                     <input name="type" value={newClass.type} onChange={handleChange} required />
                 </label>
                 <label>
+                    <h3>Date:</h3>
+                    <input name="date" value={newClass.date} onChange={handleChange} required placeholder="mm/dd/yyyy" />
+                </label>
+                <label>
                     <h3>Start Time:</h3>
-                    <input name="start_time" value={newClass.start_time} onChange={handleChange} required />
+                    <input name="time" value={newClass.start_time} onChange={handleChange} required />
                 </label>
                 <label>
                     <h3>Duration:</h3>
@@ -68,7 +82,7 @@ export default function CreateClass(props){
                 </label>
                 <label>
                     <h3>Intensity Level:</h3>
-                    <select name="intensity_level" id="intensity_level" onChange={handleChange} required>
+                    <select name="intensity" id="intensity" onChange={handleChange} required>
                         <option value="low">low</option>
                         <option value="medium">medium</option>
                         <option value="high">high</option>
@@ -82,7 +96,7 @@ export default function CreateClass(props){
                 </label>
                 <label>
                     <h3>Maximum Participants</h3>
-                    <input type="number" name="max_class_size" value={newClass.max_class_size} onChange={handleChange} required min="5" max="30"/>
+                    <input type="number" name="max_size" value={newClass.max_size} onChange={handleChange} required min={5} max={30}/>
                 </label>
                 <button type="submit">Create Class</button>
             </form>

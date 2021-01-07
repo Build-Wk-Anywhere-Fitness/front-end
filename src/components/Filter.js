@@ -19,11 +19,13 @@ export default function Filter(props){
     }
 
     const handleFetch = () => {
-        console.log(filterType, value);
+        let payload = {[filterType]: value}
+        console.log(payload)
         axiosWithAuth()
-            .post(`/classes/${filterType}`, value)
+            .post(`/classes/${filterType}`, payload)
             .then(res => {
                 console.log(res)
+                setCourses(res.data)
             })
             .catch(err => {
                 console.log(err)
@@ -59,6 +61,7 @@ export default function Filter(props){
             <Link to="/classes">Return to Classes</Link>
             <form onSubmit={handleSubmit}>
                 <select name="selector" id="selector" onChange={handleFilterChange}>
+                    <option value="select">Select A filter</option>
                     <option value="time">Start Time</option>
                     <option value="date">Date (unavailable)</option>
                     <option value="duration">Duration</option>
