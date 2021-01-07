@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
 import EditCourse from './EditCourse';
 
 export default function Course(props){

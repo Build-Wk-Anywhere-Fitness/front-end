@@ -26,6 +26,7 @@ const Login = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault();
+        console.log(account)
         props.getLogin(account);
         push('/')
     }

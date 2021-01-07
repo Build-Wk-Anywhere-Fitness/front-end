@@ -26,10 +26,8 @@ const initialFormValues = {
   const initialDisabled = true
 
 export default function EditClass(props){ 
-    const { } = props;
 
     // default states
-    const [ classes, setClasses ] = useState([]);
     const [ formValues, setFormValues ] = useState(initialFormValues);
     const [ disabled, setDisabled ] = useState(initialDisabled);
     const [ formErrors, setFormErrors ] = useState(initialFormErrors);
@@ -51,7 +49,6 @@ export default function EditClass(props){
     
         };
           evt.preventDefault();
-          console.log(newClass);
       };
 
     // event handlers

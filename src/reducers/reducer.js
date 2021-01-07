@@ -1,5 +1,5 @@
 // This slice of state will be global and passed to specific components that need it rather than passing it through prop drilling
-import { TOGGLE_ONLINE, SET_ACCOUNT, SET_LOGOUT } from '../actions/index';
+import { TOGGLE_ONLINE, SET_LOGOUT } from '../actions/index';
 
 let token = localStorage.getItem("token");
 
@@ -12,7 +12,6 @@ const initialState = {
 export const reducer = (state = initialState, action) => {
     switch(action.type){
         case(TOGGLE_ONLINE):
-            console.log(action.payload)
             return ({
                 ...state,
                 online: true

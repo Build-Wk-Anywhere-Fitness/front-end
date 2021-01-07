@@ -20,11 +20,9 @@ export default function Filter(props){
 
     const handleFetch = () => {
         let payload = {[filterType]: value}
-        console.log(payload)
         axiosWithAuth()
             .post(`/classes/${filterType}`, payload)
             .then(res => {
-                console.log(res)
                 setCourses(res.data)
             })
             .catch(err => {
@@ -36,7 +34,6 @@ export default function Filter(props){
         axiosWithAuth()
             .delete(`/classes/${id}`)
             .then(res => {
-                console.log(res);
                 fetchCourses()
                     .then(res => {
                         setCourses(res.data)

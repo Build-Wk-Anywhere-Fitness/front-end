@@ -31,7 +31,6 @@ export default function Classes(){
         axiosWithAuth()
             .delete(`/classes/${id}`)
             .then(res => {
-                console.log(res);
                 fetchCourses()
                     .then(res => {
                         setClasses(res.data)
@@ -50,7 +49,6 @@ export default function Classes(){
             <h1>Avaiable Classes</h1>
             <Link to="/filter">Filter By Type</Link>
             {classes.map(item => {
-                console.log(item)
                 return <Course key={item.id} course={item} handleDelete={handleDelete} handleFetch={handleFetch} />
             })}
         </div>

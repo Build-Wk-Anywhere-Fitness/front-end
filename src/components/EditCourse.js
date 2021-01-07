@@ -6,11 +6,12 @@ export default function EditCourse(props){
     const workingValues = {
         name: course.name,
         type: course.type,
-        start_time: course.start_time,
+        time: course.time,
+        date: course.date,
         duration: course.duration,
-        intensity_level: course.intensity_level,
+        intensity: course.intensity,
         location: course.location,
-        max_class_size: course.max_class_size,
+        max_size: course.max_size,
         id: course.id
     }
     const [newClass, setNewClass] = useState(workingValues);
@@ -49,8 +50,12 @@ export default function EditCourse(props){
                     <input name="type" value={newClass.type} onChange={handleChange} required />
                 </label>
                 <label>
+                    <h3>Date:</h3>
+                    <input name="date" value={newClass.date} onChange={handleChange} required />
+                </label>
+                <label>
                     <h3>Start Time:</h3>
-                    <input name="start_time" value={newClass.start_time} onChange={handleChange} required />
+                    <input name="time" value={newClass.time} onChange={handleChange} required />
                 </label>
                 <label>
                     <h3>Duration:</h3>
@@ -64,7 +69,7 @@ export default function EditCourse(props){
                 </label>
                 <label>
                     <h3>Intensity Level:</h3>
-                    <select name="intensity_level" id="intensity_level" onChange={handleChange} required>
+                    <select name="intensity" id="intensity" onChange={handleChange} required>
                         <option value="low">low</option>
                         <option value="medium">medium</option>
                         <option value="high">high</option>
@@ -78,7 +83,7 @@ export default function EditCourse(props){
                 </label>
                 <label>
                     <h3>Maximum Participants</h3>
-                    <input type="number" name="max_class_size" value={newClass.max_class_size} onChange={handleChange} required min="5" max="30"/>
+                    <input type="number" name="max_size" value={newClass.max_size} onChange={handleChange} required min="5" max="30"/>
                 </label>
                 <button type="submit">Update Class</button>
             </form>

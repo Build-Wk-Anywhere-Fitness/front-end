@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import CreateClass from './CreateClass';
 // import { axiosWithAuth } from '../utils/axiosWithAuth';
 
@@ -6,7 +6,6 @@ import CreateClass from './CreateClass';
 
 function InstructorPage(props){
     const [toggleCreate, setToggleCreate] = useState(false);
-    const [toggleClasses, setToggleClasses] = useState(false);
 
     const setCreate = () => {
         setToggleCreate(!toggleCreate)

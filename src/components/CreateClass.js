@@ -35,11 +35,9 @@ export default function CreateClass(props){
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log(newClass);
         axiosWithAuth()
             .post("/classes", newClass)
             .then(res => {
-                console.log(res);
                 alert("Class Created")
                 setNewClass(initialClass);
                 setToggle(!toggle);

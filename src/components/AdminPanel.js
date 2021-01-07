@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from "axios";
 import { getLogin } from '../actions/index';
 import { connect } from "react-redux";
@@ -20,14 +20,12 @@ function AdminPanel({getLogin, test}) {
         axios
             .post("https://build-wk-anywhere-fitness.herokuapp.com/api/auth/register", instructor)
             .then((res) => {
-                console.log(res);
             })
             .catch((err) => {
                 console.log(err);
             });
     };
     const testLogin = () => {
-        console.log('test login called')
         getLogin(client);
     }
 
