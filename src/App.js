@@ -15,7 +15,7 @@ import PrivateRoute from './components/PrivateRoute';
 import ClientPage from './components/ClientPage';
 import InstructorPage from './components/InstructorPage';
 import Classes from './components/Classes';
-import EditCourse from './components/EditCourse'
+import Filter from './components/Filter'
 
 import schema from './validation/schema';
 
@@ -151,6 +151,9 @@ function App(props) {
         </Route>
         <Route path="/classes">
           <Classes />
+        </Route>
+        <Route path="/filter">
+          <Filter />
         </Route>
       </Switch>
       <Footer />

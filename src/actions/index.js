@@ -27,6 +27,7 @@ export const getLogin = (account) => dispatch => {
 export const getLogout = () => dispatch => {
     dispatch({type: SET_LOGOUT})
     localStorage.removeItem("token");
+    localStorage.removeItem("role");
 };
 
 export const checkToken = () => dispatch => {
