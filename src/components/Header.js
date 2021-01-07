@@ -1,19 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {Link} from 'react-router-dom';
 import logo from '../imgs/logo.png'
 // import Login from './Login';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { getLogout} from '../actions/index';
 
-const initialValue = false;
 
 const Header = (props) =>{
     const { online, getLogout } = props;
-    const [showLogin, setShowLogin] = useState(initialValue);
-
-    const toggleLogin = e => {
-        e.preventDefault();
-    }
 
     const toggleLogout = e => {
         e.preventDefault();

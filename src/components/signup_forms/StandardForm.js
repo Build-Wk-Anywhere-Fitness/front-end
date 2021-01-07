@@ -24,65 +24,64 @@ export default function StandardForm(props) {
   }
 
   return (
-    <form className='signup-section' onSubmit={onSubmit}>
-      <div className='signup-select-btn'>
+    <form className='signup-instructor-section' onSubmit={onSubmit}>
+      <div className="signup-select-btn">
         <h2>Sign Up!</h2>
-
-
-        <div className='errors'>
-          {/* validation errors */}
-          <div>{errors.username}</div>
-          <div>{errors.email}</div>
-          <div>{errors.role}</div>
-          <div>{errors.civil}</div>
-        </div>
       </div>
-
-      <div className='main-section'>
-        <h4>General information</h4>
-
-        {/* text inputs */}
-        <label>Username&nbsp;
+      <div className='main-instructor-section'>
+        <h4>General Information</h4>
+        <div>
+          <div className="errors">
+            <div>{errors.username}</div>
+          </div>
           <input
             value={values.username}
-            onChange={onChange}
             name='username'
-            type='text'
+            onChange={onChange}
+            type="text"
+            placeholder="Username"
           />
-        </label>
-
-        <label>Password&nbsp;
+        </div>
+        <div>
+          <div className="errors">
+            <div>{errors.password}</div>
+          </div>
           <input
             value={values.password}
-            onChange={onChange}
             name='password'
-            type='password'
+            onChange={onChange}
+            type="password"
+            placeholder="Password"
           />
-        </label>
-
-        <label>Email
+        </div>
+        <div>
+          <div className="errors">
+            <div>{errors.confirmPassword}</div>
+          </div>
           <input
-            value={values.email}
+            value={values.confirmPassword}
+            name='confirmPassword'
             onChange={onChange}
-            name='email'
-            type='email'
+            type="password"
+            placeholder="Confirm Password"
           />
-        </label>
-
-        <label>Role
-          <select
-            onChange={onChange}
+        </div>
+        <div>
+          <div className="errors">
+            <div>{errors.role}</div>
+          </div>
+                    Role
+                     <select
             value={values.role}
             name='role'
+            onChange={onChange}
           >
-            <option value=''>- Select an option -</option>
-            <option value='user'>User</option>
-            <option value='instructor'>Instructor</option>
+            <option value="">- Select an option -</option>
+            <option value="user">User</option>
+            <option value="instructor">Instructor</option>
           </select>
-        </label>
-
-        <button disabled={disabled}>submit</button>
-
+        </div>
+        <button disabled={disabled}>Submit</button>
       </div>
     </form>
   )

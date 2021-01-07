@@ -23,18 +23,17 @@ import { checkToken } from './actions/index';
 
 // blank forms
 const initialFormValues = {
+
   username: '',
   password: '',
-  email: '',
+  confirmPassword: '',
   role: '',
-  authCode: '',
 }
 const initialFormErrors = {
   username: '',
   password: '',
-  email: '',
+  confirmPassword: '',
   role: '',
-  authCode: '',
 }
 
 const initialDisabled = true
@@ -54,6 +53,8 @@ function App(props) {
     return role;
   }
 
+
+  // posting the new user registration
 
   const postNewUser = newUser => {
     console.log(newUser);
@@ -95,13 +96,12 @@ function App(props) {
     })
   }
 
-  // form submission
+  // form submissions
 
   const submitForm = () => {
     const newUser = {
       username: formValues.username.trim(),
       password: formValues.password.trim(),
-      email: formValues.email.trim(),
       role: formValues.role,
     };
     postNewUser(newUser);
@@ -114,6 +114,7 @@ function App(props) {
       setDisabled(!valid);
     });
   }, [formValues])
+
 
 
   // Bryce TODO: setup Private Routes
