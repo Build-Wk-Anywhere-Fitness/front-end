@@ -7,24 +7,26 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import Signup from './components/Signup';
+import ClassesDir from './components/Class'
+import CreateClass from './components/CreateClass';
+import EditClass from './components/EditClass';
 import StandardForm from './components/signup_forms/StandardForm';
 import InstructorForm from './components/signup_forms/InstructorForm';
 import schema from './validation/schema';
 
 // blank forms
 const initialFormValues = {
+
   username: '',
   password: '',
-  email: '',
+  confirmPassword: '',
   role: '',
-  authCode: '',
 }
 const initialFormErrors = {
   username: '',
   password: '',
-  email: '',
+  confirmPassword: '',
   role: '',
-  authCode: '',
 }
 
 const initialDisabled = true
@@ -38,12 +40,15 @@ export default function App() {
   const [disabled, setDisabled] = useState(initialDisabled);
 
 
+  // posting the new user registration
+
   const postNewUser = newUser => {
     axios
-      .post('https://reqres.in/api/users', newUser)
+      .post('https://build-wk-anywhere-fitness.herokuapp.com/api/auth/register', newUser)
       .then(res => {
         setUsers([res.data, ...users])
         setFormValues(initialFormValues)
+        console.log('success, user created');
       })
       .catch(err => {
         console.log('error', err);
@@ -71,13 +76,12 @@ export default function App() {
     })
   }
 
-  // form submission
+  // form submissions
 
   const submitForm = () => {
     const newUser = {
       username: formValues.username.trim(),
       password: formValues.password.trim(),
-      email: formValues.email.trim(),
       role: formValues.role,
     };
     postNewUser(newUser);
@@ -92,37 +96,47 @@ export default function App() {
   }, [formValues])
 
 
+
   // Bryce TODO: setup Private Routes
 
 
-  return (
-    <div className="App">
-      <Header />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/signup">
-          <Signup />
-        </Route>
-        <Route path='/signup-standard'>
-          <StandardForm
-            values={formValues}
-            change={inputChange}
-            submit={submitForm}
-            errors={formErrors}
-            disabled={disabled} />
-        </Route>
-        <Route path='/signup-instructor'>
-          <InstructorForm
-            values={formValues}
-            change={inputChange}
-            submit={submitForm}
-            errors={formErrors}
-            disabled={disabled} />
-        </Route>
-      </Switch>
-      <Footer />
-    </div>
-  )
+    return(
+        <div className="App">
+          <Header />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/signup">
+              <Signup />
+            </Route>
+            <Route path='/signup-standard'>
+                <StandardForm 
+                 values={formValues} 
+                 change={inputChange} 
+                 submit={submitForm} 
+                 errors={formErrors}
+                 disabled={disabled} />
+                </Route>
+            <Route path='/signup-instructor'>
+                <InstructorForm
+                values={formValues}
+                change={inputChange}
+                submit={submitForm}
+                errors={formErrors}
+                disabled={disabled} />
+            </Route>
+            <Route path='/classes'>
+                <ClassesDir />
+            </Route>
+            <Route path='/create-class'>
+                <CreateClass />
+            </Route>
+            <Route path='/edit-class'>
+                <EditClass />
+            </Route>
+          </Switch>
+          <Footer />
+            </div>
+    )
 }

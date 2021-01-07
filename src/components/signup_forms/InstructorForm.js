@@ -25,7 +25,7 @@ export default function InstructorForm(props) {
                 <h2>Sign Up!</h2>
             </div>
             <div className='main-instructor-section'>
-                <h4>General information</h4>
+                <h4>General Information</h4>
                 <div>
                     <div className="errors">
                         <div>{errors.username}</div>
@@ -52,14 +52,14 @@ export default function InstructorForm(props) {
                 </div>
                 <div>
                     <div className="errors">
-                        <div>{errors.email}</div>
+                        <div>{errors.confirmPassword}</div>
                     </div>
                     <input
-                        value={values.email}
-                        name='email'
+                        value={values.confirmPassword}
+                        name='confirmPassword'
                         onChange={onChange}
-                        type="email"
-                        placeholder="Email"
+                        type="password"
+                        placeholder="Confirm Password"
                     />
                 </div>
                 <div>
@@ -76,18 +76,6 @@ export default function InstructorForm(props) {
                         <option value="user">User</option>
                         <option value="instructor">Instructor</option>
                     </select>
-                    <div>
-                        <div className="errors">
-                            <div>{errors.authCode}</div>
-                        </div>
-                        <input
-                            value={values.authCode}
-                            name='authCode'
-                            onChange={onChange}
-                            type="text"
-                            placeholder="Auth Code"
-                        />
-                    </div>
                 </div>
                 <button disabled={disabled}>Submit</button>
             </div>
