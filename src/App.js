@@ -1,6 +1,6 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import { Switch, Route, useHistory } from 'react-router';
+import { Switch, Route, useHistory, Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import * as yup from 'yup';
 import axios from 'axios';
@@ -15,7 +15,8 @@ import PrivateRoute from './components/PrivateRoute';
 import ClientPage from './components/ClientPage';
 import InstructorPage from './components/InstructorPage';
 import Classes from './components/Classes';
-import Filter from './components/Filter'
+import Filter from './components/Filter';
+import Signedin from './components/Signedin';
 
 import schema from './validation/schema';
 
@@ -45,7 +46,6 @@ function App(props) {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
-  const { online } = props;
 
   const { push } = useHistory();
   
@@ -124,6 +124,9 @@ function App(props) {
     <div className="App">
       <Header />
       <Switch>
+        <Route exact path="/signed-in" component={Signedin} />
+        <PrivateRoute exact path="/instructor-page" component={InstructorPage} />
+        <Redirect exact from="/reload" to="/" />
         <Route exact path="/">
           { (checkRole() === 'client') ? <PrivateRoute component={ClientPage} /> : (checkRole() === 'instructor') ? <PrivateRoute component={InstructorPage} /> : <Home />}
           {/* <Home /> */}
@@ -150,12 +153,8 @@ function App(props) {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/classes">
-          <Classes />
-        </Route>
-        <Route path="/filter">
-          <Filter />
-        </Route>
+        <PrivateRoute path="/classes" component={Classes} />
+        <PrivateRoute path="/filter" component={Filter} />
       </Switch>
       <Footer />
     </div>

@@ -23,11 +23,19 @@ const Login = (props) => {
             [e.target.name]: e.target.value
         });
     };
+
+    const invalidLogin = () => {
+        alert('invalid credentials')
+        setAccount(initialValues)
+    }
     
     const handleSubmit = e => {
         e.preventDefault();
         props.getLogin(account);
-        push('/')
+        setTimeout(() => {
+            (localStorage.getItem('token') ? push('/signed-in') : invalidLogin())
+        }, 1000);
+        
     }
 
     return(
