@@ -27,11 +27,11 @@ export default function Course(props){
 
     return (
         <div className="course-card">
-            <h3>Name: {course.name}</h3>
+            <h1>{course.name}</h1>
             <h3>Type: {course.type}</h3>
             <h3>Date: {course.date}</h3>
             <h3>Start: {course.time}</h3>
-            <h3>Duration: {course.duration}</h3>
+            <h3>Duration: {course.duration}min</h3>
             <h3>Intensity: {course.intensity}</h3>
             <h3>Location: {course.location}</h3>
             <h3>Attendees: {course.attendee_count}</h3>

@@ -50,7 +50,7 @@ export default function InstructorForm(props) {
                         placeholder="Password"
                     />
                 </div>
-                {/* <div>
+                <div>
                     <div className="errors">
                         <div>{errors.confirmPassword}</div>
                     </div>
@@ -61,7 +61,7 @@ export default function InstructorForm(props) {
                         type="password"
                         placeholder="Confirm Password"
                     />
-                </div> */}
+                </div>
                 <div>
                     <div className="errors">
                         <div>{errors.role}</div>

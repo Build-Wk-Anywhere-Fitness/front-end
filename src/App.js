@@ -45,6 +45,7 @@ function App(props) {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
+  const { online } = props;
 
   const { push } = useHistory();
   
@@ -52,7 +53,6 @@ function App(props) {
     let role = localStorage.getItem("role");
     return role;
   }
-
 
   // posting the new user registration
 

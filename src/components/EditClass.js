@@ -1,3 +1,10 @@
+/*
+
+  The Edit Class form for Jessica's CreateClass component. Would have to be updated
+  once her component is configured to send the data in a way the backend expects.
+
+*/
+
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import classSchema from '../validation/classSchema'
