@@ -1,5 +1,4 @@
 import axios from 'axios';
-import {useHistory} from 'react-router-dom'
 
 export const TOGGLE_ONLINE = "TOGGLE_ONLINE";
 export const SET_ACCOUNT = "SET_ACCOUNT;"
@@ -11,7 +10,6 @@ export const SET_LOGOUT = "SET_LOGOUT";
 
 
 export const getLogin = (account) => dispatch => {
-    const history = useHistory();
     // We're sending up an account object to shoot over to the endpoint via axios
     console.log('getlogin called')
     axios
