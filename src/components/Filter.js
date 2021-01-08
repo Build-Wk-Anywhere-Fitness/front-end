@@ -53,9 +53,9 @@ export default function Filter(props){
     }
 
     return (
-        <div>
-            <h2>Filter Available Classes By Type</h2>
-            <Link to="/classes">Return to Classes</Link>
+        <div className="filter-page" >
+            <Link to="/classes"><div className="create-class-btn filter-return-btn">Return</div></Link>
+            <h2>Search For Available Classes By Type</h2>
             <form onSubmit={handleSubmit}>
                 <select name="selector" id="selector" onChange={handleFilterChange}>
                     <option value="select">Select A filter</option>
@@ -66,8 +66,7 @@ export default function Filter(props){
                     <option value="location">Location</option>
                 </select>
                 <label>
-                    <h5>Input search criteria:</h5>
-                    <input type="text" name="input" maxLength="30" onChange={handleValueChange} required />
+                    <input className="search-input" type="text" name="input" maxLength="30" onChange={handleValueChange} required placeholder="input search criteria" />
                 </label>
                 <button type="submit">Search</button>
             </form>

@@ -50,7 +50,7 @@ export default function CreateClass(props){
     return(
         <div>
             <h1>Create A Class</h1>
-            <form onSubmit={handleSubmit}>
+            <form className="create-class-form" onSubmit={handleSubmit}>
                 <label>
                     <h3>Class Name:</h3>
                     <input name="name" value={newClass.name} onChange={handleChange} required />
@@ -68,16 +68,14 @@ export default function CreateClass(props){
                     <input name="time" value={newClass.start_time} onChange={handleChange} required />
                 </label>
                 <label>
-                    <h3>Duration:</h3>
-                    <select name="duration" id="duration" onChange={handleChange} required>
-                        <option value="60">60</option>
-                        <option value="45">45</option>
-                        <option value="30">30</option>
-                        <option value="15">15</option>
-                    </select>
-                    {/* <input name="duration" value={newClass.duration} onChange={handleChange} required /> */}
+                    <h3>Location:</h3>
+                    <input name="location" value={newClass.location} onChange={handleChange} required />
                 </label>
-                <label>
+                <label className="create-class-left-field" >
+                    <h3>Maximum Participants:</h3>
+                    <input type="number" name="max_size" value={newClass.max_size} onChange={handleChange} required min={5} max={30}/>
+                </label>
+                <label className="create-class-left-field" >
                     <h3>Intensity Level:</h3>
                     <select name="intensity" id="intensity" onChange={handleChange} required>
                         <option value="low">low</option>
@@ -87,19 +85,30 @@ export default function CreateClass(props){
                     </select>
                     {/* <input name="intensity_level" value={newClass.intensity_level} onChange={handleChange} required /> */}
                 </label>
-                <label>
-                    <h3>Location:</h3>
-                    <input name="location" value={newClass.location} onChange={handleChange} required />
+                <label className="create-class-left-field" >
+                    <h3>Duration:</h3>
+                    <select name="duration" id="duration" onChange={handleChange} required>
+                        <option value="60">60</option>
+                        <option value="45">45</option>
+                        <option value="30">30</option>
+                        <option value="15">15</option>
+                    </select>
+                    {/* <input name="duration" value={newClass.duration} onChange={handleChange} required /> */}
                 </label>
-                <label>
-                    <h3>Maximum Participants</h3>
-                    <input type="number" name="max_size" value={newClass.max_size} onChange={handleChange} required min={5} max={30}/>
-                </label>
-                <button type="submit">Create Class</button>
+                <button className="create-class-btn" type="submit">Submit Class</button>
             </form>
         </div>
     )
 }
+
+/*
+    Jessica's form, has a few bugs and changes that would have to be made to fit
+    the design of the endpoings, most notably the checkboxes for type would have
+    to be able to submit a single string, max_size would have to be added and we
+    would have to ensure the data types being submitted match what the back end
+    are expecting (ie, num == num, string == string). I was a bit too exhausted 
+    with everything to take this on, but perhaps I'll come back to it. -Bryce
+*/
 
 // import React, { useState, useEffect } from 'react';
 // import * as yup from 'yup';

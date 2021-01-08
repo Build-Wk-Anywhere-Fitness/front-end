@@ -12,10 +12,10 @@ function InstructorPage(props){
     }
 
     return(
-        <div>
-            Instructor Page
+        <div className="instructor-page">
+            <h1>Instructor Dashboard</h1>
             <div className="create-class-container">
-                <button onClick={setCreate}>{(toggleCreate) ? "Cancel" : "Create Class"}</button>
+                <button className="create-class-btn" onClick={setCreate}>{(toggleCreate) ? "Cancel" : "Create Class"}</button>
                 {(toggleCreate) ? <CreateClass toggle={toggleCreate} setToggle={setToggleCreate}/> : ""}
             </div>
         </div>

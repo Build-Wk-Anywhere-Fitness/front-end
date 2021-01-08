@@ -47,7 +47,7 @@ export default function Classes(){
     return(
         <div className="classes-container">
             <h1>Avaiable Classes</h1>
-            <Link to="/filter">Filter By Type</Link>
+            <Link to="/filter"><div className="create-class-btn filter-return-btn">Filter</div></Link>
             {classes.map(item => {
                 return <Course key={item.id} course={item} handleDelete={handleDelete} handleFetch={handleFetch} />
             })}
